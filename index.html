@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Analyzer - Lines of Code Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🍰 Code Analyzer</h1>
+      <p>Analyze your code files for lines of code, comments, and blank lines</p>
+    </header>
+
+    <main>
+      <div class="upload-section">
+        <div id="dropZone" class="drop-zone">
+          <div class="drop-zone-content">
+            <div class="upload-icon">📁</div>
+            <h3>Drop your file here</h3>
+            <p>or</p>
+            <label for="fileInput" class="file-input-label">Choose File</label>
+            <input type="file" id="fileInput" accept=".java,.js,.jsx,.ts,.tsx,.py,.pyw,.cs,.cpp,.cc,.cxx,.h,.hpp,.c,.txt" />
+          </div>
+        </div>
+        
+        <div id="progressContainer" class="progress-container" style="display: none;">
+          <div class="progress-bar">
+            <div id="progressBar" class="progress-fill"></div>
+          </div>
+          <p>Analyzing file...</p>
+        </div>
+      </div>
+
+      <div id="results" class="results"></div>
+    </main>
+
+    <footer>
+      <p>Supported languages: Java, Python, JavaScript, TypeScript, C#, C++, C</p>
+    </footer>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
