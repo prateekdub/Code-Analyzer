@@ -1,4 +1,4 @@
-# 🍰 Code Analyzer
+#  Code Analyzer
 
 A modern, optimized web application for analyzing code files and counting lines of code, comments, and blank lines.
 
@@ -31,14 +31,14 @@ A modern, optimized web application for analyzing code files and counting lines 
 
 ## 🚀 Getting Started
 
-1. **Install Dependencies**
+1. **Mac/Linux**
    ```bash
-   npm install
+   sh deploy_mac.sh
    ```
 
-2. **Start Development Server**
-   ```bash
-   npm start
+2. **Windows**
+   ```terminal
+   deploy_win.ps1
    ```
 
 3. **Open Browser**
@@ -104,9 +104,4 @@ The analyzer provides detailed statistics including:
 - [ ] Batch file processing
 - [ ] Code complexity metrics
 - [ ] Git integration for repository analysis
-- [ ] Dark mode theme
-- [ ] PWA capabilities
 
-## 📝 License
-
-MIT License - feel free to use and modify as needed!
