@@ -36,4 +36,26 @@ export class BaseParser {
 
     return 'code';
   }
+
+  // New method to detect variable declarations
+  countVariables(line) {
+    const trimmed = line.trim();
+    
+    // Skip comments and blank lines
+    if (trimmed === '' || trimmed.startsWith(this.singleLineComment)) {
+      return 0;
+    }
+
+    // Remove inline comments
+    const commentIndex = trimmed.indexOf(this.singleLineComment);
+    const codeLine = commentIndex > 0 ? trimmed.substring(0, commentIndex) : trimmed;
+    
+    return this.detectVariableDeclarations(codeLine);
+  }
+
+  // Override this method in language-specific parsers
+  detectVariableDeclarations(line) {
+    // Default implementation - can be overridden by specific languages
+    return 0;
+  }
 } 

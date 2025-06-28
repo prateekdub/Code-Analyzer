@@ -110,18 +110,24 @@ class CodeAnalyzer {
         blank: 0,
         comment: 0,
         code: 0,
+        variables: 0,
         total: lines.length
       };
 
       // Process lines in chunks for better performance
       await this.performanceOptimizer.processInChunks(
         lines,
-        (line) => rules.parseLine(line, state),
+        (line) => {
+          const type = rules.parseLine(line, state);
+          const varCount = rules.countVariables ? rules.countVariables(line) : 0;
+          return { type, varCount };
+        },
         (progress) => this.updateProgress(progress)
       ).then(results => {
         // Count results
-        for (const type of results) {
-          stats[type]++;
+        for (const result of results) {
+          stats[result.type]++;
+          stats.variables += result.varCount;
         }
       });
 
@@ -180,6 +186,10 @@ class CodeAnalyzer {
           <div class="stat-label">Code Lines</div>
           <div class="stat-percentage">${percentage.code}%</div>
         </div>
+        <div class="stat-card variables">
+          <div class="stat-number">${stats.variables}</div>
+          <div class="stat-label">Variables</div>
+        </div>
         <div class="stat-card total">
           <div class="stat-number">${stats.total}</div>
           <div class="stat-label">Total Lines</div>
@@ -188,6 +198,7 @@ class CodeAnalyzer {
       <div class="summary">
         <p>Code density: <strong>${percentage.code}%</strong></p>
         <p>Comment ratio: <strong>${percentage.comment}%</strong></p>
+        <p>Variables per line: <strong>${(stats.variables / stats.total).toFixed(2)}</strong></p>
         <p>File size: <strong>${this.formatFileSize(fileName)}</strong></p>
       </div>
     `;

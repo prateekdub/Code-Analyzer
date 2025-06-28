@@ -196,6 +196,10 @@ input[type="file"] {
   border-left-color: #28a745;
 }
 
+.stat-card.variables {
+  border-left-color: #17a2b8;
+}
+
 .stat-card.total {
   border-left-color: #007bff;
 }
@@ -216,6 +220,10 @@ input[type="file"] {
 
 .stat-card.code .stat-number {
   color: #28a745;
+}
+
+.stat-card.variables .stat-number {
+  color: #17a2b8;
 }
 
 .stat-card.total .stat-number {
