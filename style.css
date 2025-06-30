@@ -46,6 +46,37 @@ main {
   margin-bottom: 2rem;
 }
 
+.upload-mode-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.mode-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin: 0 0.25rem;
+}
+
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mode-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 .drop-zone {
   border: 3px dashed #fff;
   border-radius: 12px;
@@ -102,9 +133,15 @@ main {
   background: #45a049;
 }
 
+/* Hide all file inputs by default */
 input[type="file"] {
-  display: none;
+  display: none !important;
 }
+
+/* Show inputs only when explicitly set to block
+input[type="file"].visible {
+  display: block !important;
+} */
 
 .progress-container {
   text-align: center;
@@ -196,6 +233,10 @@ input[type="file"] {
   border-left-color: #28a745;
 }
 
+.stat-card.variables {
+  border-left-color: #17a2b8;
+}
+
 .stat-card.total {
   border-left-color: #007bff;
 }
@@ -216,6 +257,10 @@ input[type="file"] {
 
 .stat-card.code .stat-number {
   color: #28a745;
+}
+
+.stat-card.variables .stat-number {
+  color: #17a2b8;
 }
 
 .stat-card.total .stat-number {
@@ -249,6 +294,62 @@ input[type="file"] {
 
 .summary p:last-child {
   margin-bottom: 0;
+}
+
+.folder-summary {
+  background: #e3f2fd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.folder-summary h4 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.file-list {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: white;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s ease;
+}
+
+.file-item:hover {
+  background: #f8f9fa;
+}
+
+.file-item:last-child {
+  border-bottom: none;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.file-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.file-stats span {
+  background: #f0f0f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
 }
 
 .error {
@@ -286,6 +387,20 @@ footer {
   .drop-zone {
     padding: 2rem 1rem;
   }
+
+  .upload-mode-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mode-btn {
+    margin: 0;
+  }
+
+  .file-stats {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -299,5 +414,11 @@ footer {
   
   .stat-number {
     font-size: 1.5rem;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }

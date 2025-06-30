@@ -10,18 +10,24 @@
   <div class="container">
     <header>
       <h1>Code Analyzer</h1>
-      <p>Analyze your code files for lines of code, comments, and blank lines</p>
+      <p>Analyze your code files and folders for lines of code, comments, and blank lines</p>
     </header>
 
     <main>
       <div class="upload-section">
+        <div class="upload-mode-toggle">
+          <button id="fileMode" class="mode-btn active">📄 Single File</button>
+          <button id="folderMode" class="mode-btn">📁 Folder</button>
+        </div>
+
         <div id="dropZone" class="drop-zone">
           <div class="drop-zone-content">
             <div class="upload-icon">📁</div>
-            <h3>Drop your file here</h3>
+            <h3 id="dropZoneTitle">Drop your file here</h3>
             <p>or</p>
-            <label for="fileInput" class="file-input-label">Choose File</label>
+            <label for="fileInput" class="file-input-label" id="fileInputLabel">Choose File</label>
             <input type="file" id="fileInput" accept=".java,.js,.jsx,.ts,.tsx,.py,.pyw,.cs,.cpp,.cc,.cxx,.h,.hpp,.c,.txt" />
+            <input type="file" id="folderInput" webkitdirectory directory multiple style="display: none;" />
           </div>
         </div>
         
@@ -29,7 +35,7 @@
           <div class="progress-bar">
             <div id="progressBar" class="progress-fill"></div>
           </div>
-          <p>Analyzing file...</p>
+          <p id="progressText">Analyzing file...</p>
         </div>
       </div>
 
