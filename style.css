@@ -138,10 +138,10 @@ input[type="file"] {
   display: none !important;
 }
 
-/* Show inputs only when explicitly set to block */
+/* Show inputs only when explicitly set to block
 input[type="file"].visible {
   display: block !important;
-}
+} */
 
 .progress-container {
   text-align: center;
